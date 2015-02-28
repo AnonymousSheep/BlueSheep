@@ -28,23 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            #if !__MonoCS__
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            #endif
             this.sadikTabControl1 = new BlueSheep.Interface.SadikTabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.g = new System.Windows.Forms.DataGridView();
             this.gg = new System.Windows.Forms.DataGridView();
+            #if !__MonoCS__
             this.GatherPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            #endif
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.sadikTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.g)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gg)).BeginInit();
+            #if !__MonoCS__
             ((System.ComponentModel.ISupportInitialize)(this.GatherPie)).BeginInit();
+            #endif
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +120,7 @@
             this.gg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gg.Size = new System.Drawing.Size(419, 323);
             this.gg.TabIndex = 0;
+            #if !__MonoCS__
             // 
             // GatherPie
             // 
@@ -138,6 +145,7 @@
             this.GatherPie.Size = new System.Drawing.Size(419, 323);
             this.GatherPie.TabIndex = 0;
             this.GatherPie.Text = "chart1";
+            #endif
             // 
             // tabPage1
             // 
@@ -163,7 +171,9 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            #if !__MonoCS__
             this.tabPage3.Controls.Add(this.GatherPie);
+            #endif
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -181,7 +191,9 @@
             this.sadikTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.g)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gg)).EndInit();
+            #if !__MonoCS__
             ((System.ComponentModel.ISupportInitialize)(this.GatherPie)).EndInit();
+            #endif
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -194,7 +206,10 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        #if __MonoCS__
+        #else
         private System.Windows.Forms.DataVisualization.Charting.Chart GatherPie;
+        #endif
         public System.Windows.Forms.DataGridView g;
         public System.Windows.Forms.DataGridView gg;
         private System.Windows.Forms.TabPage tabPage4;

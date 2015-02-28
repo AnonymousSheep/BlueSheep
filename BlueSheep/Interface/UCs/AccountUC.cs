@@ -31,8 +31,11 @@ using BlueSheep.Interface.Text.Chat;
 using BlueSheep.Common.Data.D2o;
 using System.Collections;
 using BlueSheep.Engine.Constants;
-using System.Windows.Forms.DataVisualization.Charting;
 using BlueSheep.Interface.UCs;
+
+#if !__MonoCS__
+using System.Windows.Forms.DataVisualization.Charting;
+#endif
 
 namespace BlueSheep.Interface
 {
@@ -791,17 +794,16 @@ namespace BlueSheep.Interface
 
         public void ActualizeFightStats(Dictionary<string, int> winLose, Dictionary<DateTime,int> xpwon)
         {
+            #if !__MonoCS__
             if (WinLoseFightPie.InvokeRequired)
             {
                 Invoke(new DelegGatherPie(ActualizeFightStats), winLose, xpwon);
                 return;
             }
-            #if __MonoCS__
 
-            #else
             if (WinLoseFightPie.Titles.Count < 1)
-            WinLoseFightPie.Titles.Add("Résultats des combats");
-            #endif
+                WinLoseFightPie.Titles.Add("Résultats des combats");
+
             WinLoseFightPie.Series.Clear();
             WinLoseFightPie.ChartAreas[0].BackColor = Color.Transparent;
             Series series1 = new Series
@@ -822,12 +824,9 @@ namespace BlueSheep.Interface
                 i += 1;
             }
             this.XpBarsChart.Series.Clear();
-            #if __MonoCS__
 
-            #else
             if (XpBarsChart.Titles.Count < 1)
             this.XpBarsChart.Titles.Add("Experience gagnée");
-            #endif
             foreach (KeyValuePair<DateTime, int> p in xpwon)
             {
                 Series series = new Series(p.Key.ToShortDateString());
@@ -839,6 +838,7 @@ namespace BlueSheep.Interface
             }
             WinLoseFightPie.Invalidate();
             XpBarsChart.Invalidate();
+            #endif
         }
 
         private void MonsterTextBox_GetFocus(object sender, EventArgs e)

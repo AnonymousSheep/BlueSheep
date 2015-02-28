@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountUC));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.PosLabel = new System.Windows.Forms.ToolStripLabel();
             this.ToolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -1713,8 +1707,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxMonstersNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinMonstersNumber)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            #if __MonoCS__
+            #else
             ((System.ComponentModel.ISupportInitialize)(this.WinLoseFightPie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XpBarsChart)).EndInit();
+            #endif
             this.JobPage.ResumeLayout(false);
             this.FamiPage.ResumeLayout(false);
             this.panelAccountInformations.ResumeLayout(false);
@@ -1831,8 +1828,10 @@
         private System.Windows.Forms.NumericUpDown NUDVerbose;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel LevelLb;
+        #if !__MonoCS__
         private System.Windows.Forms.DataVisualization.Charting.Chart WinLoseFightPie;
         private System.Windows.Forms.DataVisualization.Charting.Chart XpBarsChart;
+        #endif
         private System.Windows.Forms.TabPage tabPage7;
         private SadikButton ForceMonstersBt;
         private SadikButton ForbidMonsterBt;

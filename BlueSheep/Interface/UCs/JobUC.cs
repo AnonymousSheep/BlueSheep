@@ -6,7 +6,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+#if !__MonoCS__
 using System.Windows.Forms.DataVisualization.Charting;
+#endif
 using BlueSheep.Core.Job;
 using BlueSheep.Interface.Text;
 
@@ -32,7 +34,9 @@ namespace BlueSheep.Interface
             job = j;
             sadikTabControl1.TabPages[0].Controls.Add(g);
             sadikTabControl1.TabPages[1].Controls.Add(gg);
+            #if !__MonoCS__
             sadikTabControl1.TabPages[2].Controls.Add(GatherPie);
+            #endif
             this.Dock = DockStyle.Fill;
             g.Columns.Add("SkillName", "Skills");
             g.Columns.Add("RessourceName", "Ressources");
@@ -50,17 +54,14 @@ namespace BlueSheep.Interface
         #region Public Methods
         public void ActualizeStats(Dictionary<string, int> ressourcesGathered)
         {
+            #if !__MonoCS__
             if (GatherPie.InvokeRequired)
             {
                 Invoke(new DelegGatherPie(ActualizeStats), ressourcesGathered);
                 return;
             }
-            #if __MonoCS__
-
-            #else
             if (GatherPie.Titles.Count < 1)
-            GatherPie.Titles.Add("Ressources");
-            #endif
+                GatherPie.Titles.Add("Ressources");
             GatherPie.Series.Clear();        
             GatherPie.ChartAreas[0].BackColor = Color.Transparent;
             Series series1 = new Series
@@ -86,6 +87,7 @@ namespace BlueSheep.Interface
                 i += 1;
             }
             GatherPie.Invalidate();
+            #endif
         }
 
         public bool HasRightTool()

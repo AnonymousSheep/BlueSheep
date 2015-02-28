@@ -18,8 +18,12 @@ namespace BlueSheep
             {
                 try
                 {
+                    #if __MonoCS__
+
+                    #else
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
+
                     RegistryKey reg;
                     Registry.CurrentUser.DeleteSubKeyTree("Software\\BlueSheep", false);
                     reg = Registry.CurrentUser.CreateSubKey("Software\\BlueSheep");
@@ -32,6 +36,8 @@ namespace BlueSheep
                     }
                     reg.SetValue("Version", 0.8);
                     reg.SetValue("Minor", 7);
+                    #endif
+
                     Application.Run(new MainForm("0.8.7"));
                 }
                 catch (Exception ex)
